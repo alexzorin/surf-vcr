@@ -1,0 +1,4 @@
+/.env
+/surf-vcr.toml
+/surf-vcr
+/*.deb

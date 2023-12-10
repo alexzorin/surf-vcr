@@ -1,0 +1,18 @@
+name: "surf-vcr"
+version: "1.0.0"
+arch: "arm64"
+platform: "linux"
+section: "default"
+priority: "extra"
+maintainer: "alexzorin"
+description: "Surf VCR"
+homepage: "https://github.com/alexzorin/surf-vcr"
+license: "MIT"
+
+contents:
+  - src: "./surf-vcr"
+    dst: "/usr/bin/surf-vcr"
+    type: "file"
+  - src: "./surf-vcr.service"
+    dst: "/lib/systemd/system/surf-vcr.service"
+    type: "config"
