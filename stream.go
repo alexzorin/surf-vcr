@@ -10,13 +10,14 @@ import (
 )
 
 func runStream(ctx context.Context, name string, conf streamConfig, videoDir string) error {
+	defer slog.Info("Stopped stream", "name", name)
+
 	for {
 		videoName := fmt.Sprintf("%s-%s.ts", name, time.Now().Format(time.RFC3339))
 		videoPath := filepath.Join(videoDir, videoName)
 
 		slog.Info("Starting stream", "name", name, "source", conf.Source,
 			"destination", videoPath)
-		defer slog.Info("Stopped stream", "name", name)
 
 		cmd := exec.CommandContext(ctx, "gst-launch-1.0",
 			conf.Source, "!", "hlsdemux", "!", "filesink", "location="+videoPath)
